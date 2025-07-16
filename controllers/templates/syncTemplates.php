@@ -14,6 +14,15 @@ if ($stmt) {
     }
 }
 
+// Verwijder templates uit de database die niet meer als bestand bestaan
+foreach ($dbTemplates as $dbTemplate) {
+    if (!in_array($templateDir . $dbTemplate, $templates)) {
+        $sql = "DELETE FROM templates WHERE filename = ?";
+        $delete = $conn->prepare($sql);
+        $delete->execute([$dbTemplate]);
+    }
+}
+
 // Voeg nieuwe templates toe aan de database
 foreach ($templates as $filePath) {
     $fileName = basename($filePath);

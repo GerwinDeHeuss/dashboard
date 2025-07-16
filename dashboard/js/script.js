@@ -1,4 +1,4 @@
-document.querySelector('.blue-btn').addEventListener('click', function(e) {
+document.querySelector('.open-slide-in').addEventListener('click', function(e) {
     e.preventDefault();
     document.getElementById('slide-in').classList.add('open');
     document.getElementById('slide-in-overlay').classList.add('open');

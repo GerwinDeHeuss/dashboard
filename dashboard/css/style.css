@@ -135,8 +135,8 @@ p {
 #slide-in {
     position: fixed;
     top: 0;
-    right: -420px;
-    width: 400px;
+    right: -770px;
+    width: 750px;
     height: 100vh;
     background: #fff;
     box-shadow: -4px 0 24px rgba(44,62,80,0.10);
@@ -176,6 +176,34 @@ p {
     font-weight: 500;
 }
 
+#slide-in input[type="text"],
+#slide-in select, 
+#slide-in select option{
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    background: #f7fafc;
+    font-size: 1em;
+    font-family: 'Outfit', sans-serif;
+    margin-bottom: 16px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 3px rgba(44,62,80,0.04);
+    outline: none;
+}
+
+#slide-in input[type="text"]:focus,
+#slide-in select:focus {
+    border-color: #14253D;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(63,216,190,0.10);
+}
+
+#slide-in label {
+    font-weight: 500;
+    color: #14253D;
+    display: block;
+}
 
 
 /* standard classes */

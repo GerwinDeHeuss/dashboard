@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+button {
+    font-family: 'Outfit', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    color: rgb(161 166 177);
+    font-weight: 500;
+}
+/* buttons */
+
+.blue-btn {
+    background: #14253D;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 22px 10px 18px;
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(63,216,190,0.12);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.blue-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+}
+
+.white-btn {
+    background: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 22px 10px 18px;
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    border: 1px solid #e5e7eb; 
+}
+
+.white-btn svg {
+    width: 20px;
+    height: 20px;
+    
+}
+
+/* pages dashboard */
+
+#pages .intro {
+    padding: 30px 0;
+}
+
+#pages .intro h2 {
+    padding-bottom: 5px;
+}
+
+#pages .card {
+    border: 1px solid #e5e7eb; 
+    border-radius: 5px;
+    background-color: #fff;
+    margin-bottom: 30px;
+}
+
+#pages .card .info {
+    padding: 30px;
+}
+
+#pages .card .info .icon {
+    width: 32px;
+    height: 32px;
+    background-color: rgb(219 234 254);
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#pages .card .info .status {
+    padding: 2px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95em;
+    display: inline-block;
+}
+#pages .card .info .status--groen {
+    background: #e6f9f2;
+    color: #1bb97a;
+}
+#pages .card .info .status--oranje {
+    background: #fff6e0;
+    color: #ff9800;
+}
+
+
+
+/* standard classes */
+
+.flex {
+    display: flex;
+}
+
+.justify-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.align-center {
+    display: flex;
+    align-items: center;
+}
+
+.directioncolumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.gap20 {
+    gap: 20px;
+}
+
+.gap10 {
+    gap: 10px;
+}
+
+.gap5 {
+    gap: 5px;
+}
+

@@ -1,34 +1,12 @@
 <?php 
+
 require '../../controllers/controller.php';
+
 include 'addPage.php';
 
-
+include('../includes/header.php');
 
 ?>
-
-<?php include('../includes/header.php'); ?>
-
-<form>
-    <select name="template_id">
-        <?php foreach ($templates as $template): ?>
-            <option value="<?= $template['id'] ?>"><?= htmlspecialchars($template['title']) ?></option>
-        <?php endforeach; ?>
-    </select>
-</form>
-
-<!-- Pagina toevoegen formulier -->
-<form method="post" style="margin-bottom: 30px; background: #fff; padding: 20px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); max-width: 500px;">
-    <h3>Nieuwe pagina toevoegen</h3>
-    <label for="title">Titel:</label><br>
-    <input type="text" id="title" name="title" required style="width: 100%; padding: 8px; margin-bottom: 12px;"><br>
-    <label for="template_id">Template:</label><br>
-    <select id="template_id" name="template_id" required style="width: 100%; padding: 8px; margin-bottom: 12px;">
-        <?php foreach ($templates as $template): ?>
-            <option value="<?= $template['id'] ?>"><?= htmlspecialchars($template['title']) ?></option>
-        <?php endforeach; ?>
-    </select><br>
-    <button type="submit" name="add_page" style="padding: 10px 18px; background: #1976d2; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Toevoegen</button>
-</form>
 
 <section id="pages">
     <div class="container">

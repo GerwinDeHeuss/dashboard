@@ -13,3 +13,9 @@
 
 <body>
 
+
+<ul>
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Profiel</a></li>
+  <li style="float:right"><a class="active" href="../../auth/logout.php">Log uit</a></li>
+</ul>

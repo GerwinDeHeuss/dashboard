@@ -6,7 +6,7 @@ $templateDir = '../../views/';
 $templates = glob($templateDir . 'template.*.php');
 
 // Haal bestaande templates uit de database
-$stmt = $conn->query("SELECT filename FROM templates");
+$stmt = $pdo->query("SELECT filename FROM templates");
 $dbTemplates = [];
 if ($stmt) {
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -18,7 +18,7 @@ if ($stmt) {
 foreach ($dbTemplates as $dbTemplate) {
     if (!in_array($templateDir . $dbTemplate, $templates)) {
         $sql = "DELETE FROM templates WHERE filename = ?";
-        $delete = $conn->prepare($sql);
+        $delete = $pdo->prepare($sql);
         $delete->execute([$dbTemplate]);
     }
 }
@@ -29,7 +29,7 @@ foreach ($templates as $filePath) {
     if (!in_array($fileName, $dbTemplates)) {
         $title = ucfirst(str_replace(['template.', '.php'], '', $fileName));
         $sql = "INSERT INTO templates (filename, title) VALUES (?, ?)";
-        $insert = $conn->prepare($sql);
+        $insert = $pdo->prepare($sql);
         $insert->execute([$fileName, $title]);
     }
 }

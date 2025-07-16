@@ -3,9 +3,9 @@
 
 require_once('../../config/database.php');
 
-function getAllTemplates($conn) {
+function getAllTemplates($pdo) {
     $sql = "SELECT id, title, filename FROM templates";
-    $stmt = $conn->query($sql);
+    $stmt = $pdo->query($sql);
 
     $templates = [];
     if ($stmt) {

@@ -1,0 +1,172 @@
+:root {
+  /* Hoofdkleur */
+  --color-primary-dark: #14253d;
+
+  /* Neutrale combinaties */
+  --color-white: #ffffff;
+  --color-light-gray-1: #d9d9d9;
+  --color-light-gray-2: #f0f0f0;
+  --color-dark-gray: #4a4a4a;
+
+  /* Accentkleuren */
+  --color-gold: #ffd700;
+  --color-gold-softer: #e1b000;
+  --color-turquoise: #00c2cb;
+  --color-coral-orange: #ff6f5e;
+
+  /* Zachte natuurlijke tinten */
+  --color-sand-beige: #eaddc8;
+  --color-sage-green: #a3b18a;
+  --color-light-blue: #a8d0db;
+
+  /* Algemene kleuren voor elementen */
+  --background-color: var(--color-light-gray-2);
+  --text-color: var(--color-primary-dark);
+  --card-background: var(--color-white);
+  --border-color: var(--color-light-gray-1);
+  --button-background: var(--color-primary-dark);
+  --button-text: var(--color-white);
+  --button-hover-background: var(--color-turquoise);
+  --link-color: var(--color-turquoise);
+  --link-hover-color: var(--color-coral-orange);
+  --input-border: var(--color-light-gray-1);
+  --input-focus-border: var(--color-turquoise);
+  --error-color: var(--color-coral-orange);
+  --success-color: var(--color-sage-green);
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: var(--card-background);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+}
+
+h2 {
+  color: var(--color-primary-dark);
+  margin-bottom: 25px;
+  font-size: 1.8em;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: var(--color-dark-gray);
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 12px 10px;
+  border: 1px solid var(--input-border);
+  border-radius: 5px;
+  font-size: 1em;
+  color: var(--text-color);
+  background-color: var(--color-white);
+  transition: border-color 0.3s ease;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus {
+  border-color: var(--input-focus-border);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 194, 203, 0.2); /* Turquoise met transparantie */
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--button-background);
+  color: var(--button-text);
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: var(--button-hover-background);
+  transform: translateY(-2px);
+}
+
+.message {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.message.error {
+  background-color: rgba(255, 111, 94, 0.1); /* Koraal/oranje met transparantie */
+  color: var(--error-color);
+  border: 1px solid var(--error-color);
+}
+
+.message.success {
+  background-color: rgba(163, 177, 138, 0.1); /* Sage green met transparantie */
+  color: var(--success-color);
+  border: 1px solid var(--success-color);
+}
+
+.link-text {
+  margin-top: 20px;
+  font-size: 0.95em;
+  color: var(--color-dark-gray);
+}
+
+.link-text a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.link-text a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+/* Responsive aanpassingen */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+    margin: 10px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  button {
+    font-size: 1em;
+    padding: 10px;
+  }
+}

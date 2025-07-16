@@ -1,5 +1,5 @@
 <?php include('includes/header.php'); ?>
 
-<a href="./pages/index.php">pages</a>
+<a href="../auth/index.php">Login</a>
 
 <?php include('includes/footer.php'); ?> 

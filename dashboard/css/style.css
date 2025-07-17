@@ -74,6 +74,10 @@ p {
 
 /* pages dashboard */
 
+#pages {
+    width: 100%;
+}
+
 #pages .intro {
     padding: 30px 0;
 }
@@ -205,6 +209,65 @@ p {
     display: block;
 }
 
+/* sidebar */
+
+/* Sidebar begint ingeklapt, width 0 */
+  .sidebar {
+    width: 0;
+    overflow: hidden;
+    background-color: #2c3e50;
+    color: white;
+    height: 100vh;
+    transition: width 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  /* Sidebar open breedte */
+  .sidebar.open {
+    width: 250px;
+  }
+
+  .sidebar header {
+    padding: 1rem;
+    font-size: 1.5rem;
+    background-color: #1a252f;
+    text-align: center;
+  }
+  .sidebar nav a {
+    display: block;
+    padding: 1rem;
+    color: white;
+    text-decoration: none;
+  }
+  .sidebar nav a:hover {
+    background-color: #2980b9;
+  }
+
+  /* Content: neemt resterende ruimte in */
+  main {
+    flex-grow: 1;
+    padding: 1rem;
+    transition: margin-left 0.3s ease;
+  }
+
+  /* Als sidebar open is, schuift content mee */
+  main.shift {
+    margin-left: 250px;
+  }
+
+  /* Toggle knop */
+  .toggle-btn {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1100;
+    background: #2980b9;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+  }
 
 /* standard classes */
 

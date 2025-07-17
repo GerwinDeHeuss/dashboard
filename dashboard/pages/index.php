@@ -8,6 +8,27 @@ include('../includes/header.php');
 
 ?>
 
+<button class="toggle-btn" aria-label="Toggle sidebar">☰</button>
+
+<div class="header">
+  <div class="sidebar" role="navigation" aria-label="Hoofdmenu">
+    <header>Dashboard</header>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Pagina's</a>
+      <a href="#">Instellingen</a>
+      <a href="#">Profiel</a>
+    </nav>
+  </div>
+
+ 
+    
+  
+
+
+
+<div class="overlay"></div>
+
 <section id="pages">
     <div class="container">
         <div class="justify-between">
@@ -67,6 +88,26 @@ include('../includes/header.php');
         <?php endforeach; ?>
     </div>
 </section>
+
+</div>
+
+<style>
+    .header {
+    display: flex;
+  }
+</style>
+
+
+ <script>
+  const toggleBtn = document.querySelector('.toggle-btn');
+  const sidebar = document.querySelector('.sidebar');
+  const main = document.querySelector('main');
+
+  toggleBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    main.classList.toggle('shift');
+  });
+</script>
 
 
 <?php include '../includes/footer.php'; ?>

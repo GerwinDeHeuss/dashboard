@@ -13,22 +13,22 @@ document.getElementById('slide-in-overlay').addEventListener('click', function()
 });
 
 
-  const toggleBtn = document.querySelector('.toggle-btn');
-  const sidebar = document.querySelector('.sidebar');
-  const overlay = document.querySelector('.overlay');
+//   const toggleBtn = document.querySelector('.toggle-btn');
+//   const sidebar = document.querySelector('.sidebar');
+//   const overlay = document.querySelector('.overlay');
 
-  function toggleSidebar() {
-    sidebar.classList.toggle('open');
-    overlay.classList.toggle('show');
-  }
+//   function toggleSidebar() {
+//     sidebar.classList.toggle('open');
+//     overlay.classList.toggle('show');
+//   }
 
-  toggleBtn.addEventListener('click', toggleSidebar);
-  overlay.addEventListener('click', toggleSidebar);
+//   toggleBtn.addEventListener('click', toggleSidebar);
+//   overlay.addEventListener('click', toggleSidebar);
 
-  // Optioneel: sluit sidebar met ESC toets
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && sidebar.classList.contains('open')) {
-      toggleSidebar();
-    }
-  });
+//   // Optioneel: sluit sidebar met ESC toets
+//   document.addEventListener('keydown', (e) => {
+//     if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+//       toggleSidebar();
+//     }
+//   });
 

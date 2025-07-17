@@ -1,5 +1,9 @@
 <?php include('includes/header.php'); ?>
 
-<a href="./pages/index.php">pages</a>
+<div class="layout-container">
+
+  <?php include 'includes/sidebar.php'; ?>
+
+</div>
 
 <?php include('includes/footer.php'); ?> 

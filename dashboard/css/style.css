@@ -211,6 +211,11 @@ p {
 
 /* sidebar */
 
+.layout-container {
+  display: flex;
+  min-height: 100vh;
+}
+
 /* Sidebar begint ingeklapt, width 0 */
   .sidebar {
     width: 0;

@@ -1,9 +1,6 @@
 <?php include('includes/header.php'); ?>
 
-<div class="layout-container">
-
-  <?php include 'includes/sidebar.php'; ?>
-
-</div>
+  <p>Hier komt je content</p>
 
 <?php include('includes/footer.php'); ?> 
+

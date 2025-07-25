@@ -1,4 +1,6 @@
-<?php require '../../controllers/controller.php'; ?>
+<?php require_once __DIR__ . '/../../controllers/controller.php'; ?>
+
+
 
 <div id="addPage"></div>
 <div id="slide-in">

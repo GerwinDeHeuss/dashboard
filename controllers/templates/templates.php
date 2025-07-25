@@ -1,7 +1,7 @@
 
 <?php
 
-require_once('../../config/database.php');
+require_once __DIR__ . '/../../config/config.php';
 
 function getAllTemplates($conn) {
     $sql = "SELECT id, title, filename FROM templates";

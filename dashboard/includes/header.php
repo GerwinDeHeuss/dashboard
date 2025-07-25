@@ -12,6 +12,24 @@
 
 <body>
 
+<div class="sidebar" role="navigation" aria-label="Hoofdmenu">
+  <header>Dashboard</header>
+  <nav>
+    <a href="/dashboard" class="active">Home</a>
+    <a href="/dashboard/pages">Pagina's</a>
+    <a href="/dashboard/settings">Instellingen</a>
+    <a href="/dashboard/profile">Profiel</a>
+  </nav>
+</div>
+
+<div class="overlay"></div>
+
+<main>
+    
+  <button class="toggle-btn" aria-label="Toggle sidebar">☰</button>
+  <a href="./pages/index.php">test</a>
+  <p>Hier komt je header</p>
+
 
 
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once('../../config/database.php');
+require_once __DIR__ . '/../../config/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_page'])) {
     $title = trim($_POST['title']);

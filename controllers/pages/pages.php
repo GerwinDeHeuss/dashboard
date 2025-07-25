@@ -1,7 +1,7 @@
 
 <?php
 
-require_once('../../config/database.php');
+require_once __DIR__ . '/../../config/config.php';
 
 function getAllPages($conn) {
     $sql = "SELECT pages.*, templates.title AS template_title

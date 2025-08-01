@@ -214,6 +214,78 @@ p {
     display: block;
 }
 
+/* pages edit */
+
+#pages_edit .content-section {
+  display: none;
+}
+
+#pages_edit .content-section.active {
+  display: block;
+}
+
+#pages_edit .menu {
+  min-width: 200px;
+}
+
+#pages_edit .hidden {
+  display: none;
+}
+
+#pages_edit .content-section.active {
+  display: block;
+}
+
+#pages_edit .menu {
+  width: 20%;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+#pages_edit .menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#pages_edit .menu li {
+  margin-bottom: 10px;
+}
+
+#pages_edit .menu button {
+  width: 100%;
+  padding: 10px 15px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 16px;
+  color: #333;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+#pages_edit .menu button:hover {
+  background-color: #f7f7f7;
+}
+
+#pages_edit .menu button.active {
+  background-color: #e5e7eb;
+}
+
+#pages_edit .content {
+    width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #e5e7eb;
+}
+
+
+
+
+
 /* header en sidebar */
 
 .sidebar {

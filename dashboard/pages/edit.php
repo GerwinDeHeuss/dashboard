@@ -10,8 +10,8 @@ include('../includes/header.php');
     <div class="container">
         <div class="justify-between">
             <div class="intro">
-                <h2><?= htmlspecialchars($pageContent['title']) ?></h2>
-                <p>Bewerk de pagina van <?= htmlspecialchars($pageContent['title']) ?></p>
+                <h2><?= htmlspecialchars($page['title']) ?></h2>
+                <p>Bewerk de pagina van <?= htmlspecialchars($page['title']) ?></p>
             </div>
             <div class="align-center">
                 <button class="open-slide-in blue-btn">

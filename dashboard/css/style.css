@@ -124,6 +124,11 @@ p {
     color: #ff9800;
 }
 
+#pages .card .button {
+    text-decoration: none;
+    color: black;
+}
+
 /* Add pages dashboard */
 
 #addPage {
@@ -228,12 +233,25 @@ p {
     width: 250px;
 }
 
-.sidebar header {
-    padding: 1rem;
+.sidebar .header {
+    padding: 30px;
     font-size: 1.5rem;
     background-color: #14253D;
-    text-align: center;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid #364563;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar .header img {
+    width: 40px;
+}
+
+.sidebar .header h1 {
+    font-size: 24px;
+}
+
+.sidebar .header p {
+    font-size: 16px;
 }
 
 .sidebar nav a {
@@ -248,7 +266,6 @@ p {
 }
 
 main {
-    padding: 1rem;
     margin-left: 0;
     transition: margin-left 0.3s ease;
   }
@@ -256,6 +273,17 @@ main {
   
 main.shift {
     margin-left: 250px;
+}
+
+header {
+    padding: 15px 30px;
+    display: flex;
+    background-color: white;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+header .content {
+    padding-left: 30px;
 }
 
 

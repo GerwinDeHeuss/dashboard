@@ -13,7 +13,15 @@
 <body>
 
 <div class="sidebar" role="navigation" aria-label="Hoofdmenu">
-  <header>Dashboard</header>
+  <div class="header">
+    <div>
+        <img src="../../img/logo-white.png" alt="">
+    </div>
+    <div>
+        <h1>HKunlimited</h1>
+        <p>Dashboard</p>
+    </div>
+  </div>
   <nav>
     <a href="/dashboard" class="active">Home</a>
     <a href="/dashboard/pages">Pagina's</a>
@@ -25,10 +33,18 @@
 <div class="overlay"></div>
 
 <main>
-    
-  <button class="toggle-btn" aria-label="Toggle sidebar">☰</button>
-  <a href="./pages/index.php">test</a>
-  <p>Hier komt je header</p>
+
+    <header>
+        <div class="align-center">
+            <button class="toggle-btn" aria-label="Toggle sidebar">☰</button>
+        </div>
+        <div class="content">
+            <h1>Dashboard</h1>
+            <p>Beheer je website content</p>
+        </div>
+    </header>
+
+  
 
 
 

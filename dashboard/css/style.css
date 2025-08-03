@@ -188,7 +188,7 @@ p {
 #slide-in input[type="text"],
 #slide-in select, 
 #slide-in select option{
-    width: 100%;
+    width: 97%;
     padding: 12px 14px;
     border: 1.5px solid #e5e7eb;
     border-radius: 8px;
@@ -238,6 +238,7 @@ p {
 
 #pages_edit .menu {
   width: 20%;
+  height: 150px;
   background-color: white;
   border: 1px solid #e5e7eb;
   padding: 1rem;
@@ -281,6 +282,108 @@ p {
     border-radius: 5px;
     border: 1px solid #e5e7eb;
 }
+
+#pages_edit .header {
+    padding: 20px 20px 10px 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+#pages_edit .info {
+    padding: 20px 20px 10px 20px;
+}
+
+#pages_edit .content-section input[type="text"],
+#pages_edit .content-section select,
+#pages_edit .content-section select option {
+    width: 97%;
+    padding: 12px 14px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    background: #f7fafc;
+    font-size: 1em;
+    font-family: 'Outfit', sans-serif;
+    
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 3px rgba(44, 62, 80, 0.04);
+    outline: none;
+}
+
+#pages_edit .content-section input[type="text"]:focus,
+#pages_edit .content-section select:focus {
+    border-color: #14253D;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(63, 216, 190, 0.10);
+}
+
+#pages_edit .content-section label {
+    font-weight: 500;
+    color: #14253D;
+    display: block;
+}
+
+#pages_edit .content-section .form-row {
+    margin-bottom: 30px;
+}
+
+#pages_edit .content-section .form-row-flex {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* Label moet eruitzien als een input */
+#pages_edit .content-section .form-row-flex label {
+    flex: 0 0 120px;
+    padding: 12px 14px;
+    background: #f7fafc;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1em;
+    font-family: 'Outfit', sans-serif;
+    color: #14253D;
+    font-weight: 500;
+    box-shadow: 0 1px 3px rgba(44, 62, 80, 0.04);
+    white-space: nowrap;
+}
+
+#pages_edit .content-section .form-row input[type="text"],
+#pages_edit .content-section .form-row select {
+    flex: 1;
+    padding: 12px 14px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    background: #f7fafc;
+    font-size: 1em;
+    font-family: 'Outfit', sans-serif;
+    box-shadow: 0 1px 3px rgba(44, 62, 80, 0.04);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Focus effect */
+#pages_edit .content-section .form-row input[type="text"]:focus,
+#pages_edit .content-section .form-row select:focus {
+    border-color: #14253D;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(63, 216, 190, 0.10);
+}
+
+.alert.success {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: #e6ffed;
+    color: #027a48;
+    border: 1.5px solid #a7f3d0;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-family: 'Outfit', sans-serif;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    max-width: 100%;
+}
+
+
 
 
 

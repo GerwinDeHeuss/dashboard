@@ -13,6 +13,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_page'])) {
 
     $created_at = date('Y-m-d');
 
+    // Check of title al bestaat
+    $stmtCheck = $conn->prepare("SELECT COUNT(*) FROM PageContent WHERE title = ?");
+    $stmtCheck->execute([$title]);
+    $titleExists = $stmtCheck->fetchColumn() > 0;
+
+    if ($titleExists) {
+        $_SESSION['error_message'] = 'Deze titel bestaat al. Kies een andere.';
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit;
+    }
+
+
     if ($title && $template_id) {
         // Voeg eerst toe aan PageContent
         $stmt1 = $conn->prepare("INSERT INTO PageContent (title, description) VALUES (?, '')");

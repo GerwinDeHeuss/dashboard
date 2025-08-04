@@ -19,6 +19,8 @@ require_once('pages/addPages.php');
 
 require_once('pages/edit.php');
 
+require_once('pages/delete.php');
+
 require_once('templates/templates.php');
 $templates = getAllTemplates($conn);
 

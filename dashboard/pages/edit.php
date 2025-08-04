@@ -1,12 +1,33 @@
 <?php 
 
+
 require_once  '../../controllers/controller.php';
 
 include('../includes/header.php');
 
 ?>
 
-<form method="post" action="">
+<form method="post" action="" onsubmit="isUpdated = false;">
+
+    <?php if (!empty($_SESSION['success_message'])): ?>
+        <div class="alert success">
+            <?= htmlspecialchars($_SESSION['success_message']) ?>
+        </div>
+        <?php unset($_SESSION['success_message']); ?>
+    <?php endif; ?>
+
+    <div class="alert warning" id="unsaved-alert" style="display: none;">
+        Je hebt wijzigingen gemaakt die nog niet zijn opgeslagen.
+    </div>
+
+    <?php if (!empty($_SESSION['error_message'])): ?>
+        <div class="alert error">
+            <?= htmlspecialchars($_SESSION['error_message']) ?>
+        </div>
+        <?php unset($_SESSION['error_message']); ?>
+    <?php endif; ?>
+
+
     <section id="pages">
         <div class="container">
             <div class="justify-between">
@@ -96,6 +117,19 @@ include('../includes/header.php');
                                 <input type="hidden" name="id" value="<?= htmlspecialchars($page['content_id']) ?>">
 
                                 <div class="form-group">
+
+                                    <div class="form-row">
+                                        <label for="title">META Titel</label><br>
+                                        <input type="text" id="metatitle" name="metatitle"
+                                            value="<?= htmlspecialchars($page['metatitle']) ?>">
+                                    </div>
+
+                                    <div class="form-row">
+                                        <label for="title">META Omschrijving</label><br>
+                                        <input type="text" id="metadescription" name="metadescription"
+                                            value="<?= htmlspecialchars($page['metadescription']) ?>">
+                                    </div>
+
                                     <div class="form-row">
                                         <label for="status">Beschikbaar zetten</label><br>
                                         <label class="switch">
@@ -122,30 +156,26 @@ include('../includes/header.php');
 
 
 <script>
-document.querySelectorAll('.menu button').forEach(btn => {
+    document.querySelectorAll('.menu button').forEach(btn => {
     btn.addEventListener('click', () => {
         const sectionId = btn.getAttribute('data-section');
 
-        // Verberg alle secties
         document.querySelectorAll('.content-section').forEach(section => {
             section.classList.add('hidden');
             section.classList.remove('active');
         });
 
-        // Laat de gekozen sectie zien
         const target = document.getElementById(sectionId);
         target.classList.remove('hidden');
         target.classList.add('active');
 
         document.querySelectorAll('.menu button').forEach(b => b.classList.remove('active'));
 
-        // Active knop + sectie
         btn.classList.add('active');
         document.getElementById(sectionId).classList.remove('hidden');
     });
 });
 
-// Standaard openen van 'pages'
 const defaultSection = document.getElementById('pages');
 defaultSection.classList.remove('hidden');
 defaultSection.classList.add('active');
@@ -156,6 +186,49 @@ if (successAlert) {
         successAlert.style.display = 'none';
     }, 4000);
 }
+    
+let isUpdated = false;
+let pendingHref = null;
+
+const unsavedAlert = document.getElementById('unsaved-alert');
+const stayBtn = document.getElementById('stay-here');
+const leaveBtn = document.getElementById('leave-page');
+
+document.querySelectorAll('input, textarea, select').forEach(input => {
+    input.addEventListener('input', () => {
+        isUpdated = true;
+    });
+});
+
+document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        if (isUpdated) {
+            e.preventDefault(); 
+            pendingHref = link.href;
+            unsavedAlert.style.display = 'block';
+        }
+    });
+});
+
+stayBtn.addEventListener('click', () => {
+    unsavedAlert.style.display = 'none';
+    pendingHref = null;
+});
+
+leaveBtn.addEventListener('click', () => {
+    window.location.href = pendingHref;
+});
+
+document.querySelector('form')?.addEventListener('submit', () => {
+    isUpdated = false;
+    unsavedAlert.style.display = 'none';
+});
+
+                                      
+
+
+
+
 </script>
 
 

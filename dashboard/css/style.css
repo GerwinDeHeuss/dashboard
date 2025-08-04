@@ -368,6 +368,54 @@ p {
     box-shadow: 0 2px 8px rgba(63, 216, 190, 0.10);
 }
 
+#pages_edit .switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 26px;
+}
+
+#pages_edit .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+#pages_edit .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 26px;
+}
+
+#pages_edit .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+#pages_edit input:checked + .slider {
+    background-color: #14253D; 
+}
+
+#pages_edit input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+#pages_edit .created {
+    float: right;
+    padding-bottom: 20px;
+}
+
+
 .alert.success {
     position: absolute;
     top: 70px;

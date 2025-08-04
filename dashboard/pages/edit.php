@@ -4,7 +4,6 @@ require_once  '../../controllers/controller.php';
 
 include('../includes/header.php');
 
-
 ?>
 
 <form method="post" action="">
@@ -12,7 +11,10 @@ include('../includes/header.php');
         <div class="container">
             <div class="justify-between">
                 <div class="intro">
-                    <h2 class="flex"><a href="./index.php"><svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#14253D"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg></a><?= htmlspecialchars($page['title']) ?></h2>
+                    <h2 class="flex"><a href="./index.php"><svg xmlns="http://www.w3.org/2000/svg" height="32px"
+                                viewBox="0 -960 960 960" width="32px" fill="#14253D">
+                                <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
+                            </svg></a><?= htmlspecialchars($page['title']) ?></h2>
                     <p>Bewerk de pagina van <?= htmlspecialchars($page['title']) ?></p>
                 </div>
                 <div class="align-center">
@@ -50,25 +52,29 @@ include('../includes/header.php');
                             <div class="form-group">
                                 <div class="form-row">
                                     <label for="title">Titel</label><br>
-                                    <input type="text" id="title" name="title" value="<?= htmlspecialchars($page['title']) ?>" required>
+                                    <input type="text" id="title" name="title"
+                                        value="<?= htmlspecialchars($page['title']) ?>" required>
                                 </div>
 
                                 <div class="form-row-flex">
                                     <label for="url"><?= htmlspecialchars($dashboardUrl)?></label>
-                                    <input type="text" id="url" name="url" value="<?= htmlspecialchars($page['url']) ?>" required>
+                                    <input type="text" id="url" name="url" value="<?= htmlspecialchars($page['url']) ?>"
+                                        required>
                                 </div>
 
                                 <div class="form-row">
-                                    <label for="title">Template</label><br>    
-                                    <select id="slide-in-template" name="template_id" required style="width: 100%; padding: 8px; margin-bottom: 20px;">
+                                    <label for="title">Template</label><br>
+                                    <select id="slide-in-template" name="template_id" required
+                                        style="width: 100%; padding: 8px; margin-bottom: 20px;">
                                         <?php foreach ($templates as $template): ?>
-                                            <option value="<?= $template['id'] ?>" 
-                                                <?= ($template['id'] == $page['template_id']) ? 'selected' : '' ?>>
-                                                <?= htmlspecialchars($template['title']) ?>
-                                            </option>
+                                        <option value="<?= $template['id'] ?>"
+                                            <?= ($template['id'] == $page['template_id']) ? 'selected' : '' ?>>
+                                            <?= htmlspecialchars($template['title']) ?>
+                                        </option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
+                                <p class="created"><?= htmlspecialchars($page['created_at']) ?></p>
                             </div>
                         </div>
                     </div>
@@ -77,7 +83,7 @@ include('../includes/header.php');
                             <h2>Widgets bewerken voor <?= htmlspecialchars($page['title']) ?></h2>
                         </div>
                         <div class="info">
-                            test
+                            <p class="created"><?= htmlspecialchars($page['created_at']) ?></p>
                         </div>
                     </div>
                     <div class="content-section hidden" id="profiel">
@@ -85,7 +91,22 @@ include('../includes/header.php');
                             <h2>Instellingen bewerken voor <?= htmlspecialchars($page['title']) ?></h2>
                         </div>
                         <div class="info">
-                            test
+                            <div class="info">
+
+                                <input type="hidden" name="id" value="<?= htmlspecialchars($page['content_id']) ?>">
+
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <label for="status">Beschikbaar zetten</label><br>
+                                        <label class="switch">
+                                            <input type="checkbox" id="status" name="status" value="1"
+                                                <?= $page['status'] ? 'checked' : '' ?>>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <p class="created"><?= htmlspecialchars($page['created_at']) ?></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -94,7 +115,7 @@ include('../includes/header.php');
         </div>
     </section>
 
-    
+
 
 </form>
 
@@ -130,11 +151,11 @@ defaultSection.classList.remove('hidden');
 defaultSection.classList.add('active');
 
 const successAlert = document.querySelector('.alert.success');
-    if (successAlert) {
-        setTimeout(() => {
-            successAlert.style.display = 'none';
-        }, 4000);
-    }
+if (successAlert) {
+    setTimeout(() => {
+        successAlert.style.display = 'none';
+    }, 4000);
+}
 </script>
 
 

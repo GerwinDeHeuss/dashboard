@@ -12,7 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $url = $_POST['url'] ?? '';
     $contentId = $_POST['id'] ?? null;
     $templateId = $_POST['template_id'] ?? null;
-    $pageId = $_GET['id'] ?? null; // De pages.id komt uit de URL
+    $pageId = $_GET['id'] ?? null; 
+    $status = isset($_POST['status']) ? 1 : 0;
+
 
     if (!$id || !$title) {
         echo "Ongeldige invoer.";
@@ -22,9 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $conn->prepare("UPDATE pageContent SET title = ? WHERE id = ?");
         $stmt->execute([$title, $contentId]);
 
-        // Update de template_id in pages
-        $stmt = $conn->prepare("UPDATE pages SET template_id = ?, url = ? WHERE id = ?");
-        $stmt->execute([$templateId, $url, $pageId]);
+        
+        $stmt = $conn->prepare("UPDATE pages SET template_id = ?, url = ?, status = ? WHERE id = ?");
+        $stmt->execute([$templateId, $url, $status, $pageId]);
+
 
         header("Location: " . $_SERVER['REQUEST_URI']);
         exit;

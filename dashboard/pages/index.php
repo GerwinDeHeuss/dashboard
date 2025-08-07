@@ -92,11 +92,15 @@ include('../includes/header.php');
                         </svg>
 
                         <div class="popup-menu" style="display: none;">
+                            <?php if (!empty($page['url'])): ?>
                             <form method="POST" action="../../controllers/pages/delete.php"
                                 onsubmit="return confirm('Weet je zeker dat je deze pagina wilt verwijderen?');">
                                 <input type="hidden" name="id" value="<?= $page['id'] ?>">
                                 <button type="submit" class="delete-btn">Verwijderen</button>
                             </form>
+                            <?php else: ?>
+                            <p class="status status--grijs">Hoofdpagina</p>
+                            <?php endif; ?>
                         </div>
                     </div>
 

@@ -2,14 +2,10 @@
 
 require_once(__DIR__ . '../../config/database.php');
 
+// Haal de URL op (mag ook leeg zijn)
 $url = $_GET['url'] ?? '';
 
-if (!$url) {
-    echo "Geen pagina opgegeven.";
-    exit;
-}
-
-// Alleen gepubliceerde pagina ophalen (status = 1)
+// Haal de pagina op, ook als url leeg is
 $stmt = $conn->prepare("SELECT * FROM pages WHERE url = ? AND status = 1");
 $stmt->execute([$url]);
 $page = $stmt->fetch();
@@ -48,4 +44,3 @@ $pageData = $page;
 $pageDescription = $pageContent['description'] ?? '';
 
 include __DIR__ . '/' . $template['filename'];
-?>

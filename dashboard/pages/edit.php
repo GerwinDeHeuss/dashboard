@@ -10,10 +10,10 @@ include('../includes/header.php');
 <form method="post" action="" onsubmit="isUpdated = false;">
 
     <?php if (!empty($_SESSION['success_message'])): ?>
-        <div class="alert success">
-            <?= htmlspecialchars($_SESSION['success_message']) ?>
-        </div>
-        <?php unset($_SESSION['success_message']); ?>
+    <div class="alert success">
+        <?= htmlspecialchars($_SESSION['success_message']) ?>
+    </div>
+    <?php unset($_SESSION['success_message']); ?>
     <?php endif; ?>
 
     <div class="alert warning" id="unsaved-alert" style="display: none;">
@@ -21,10 +21,10 @@ include('../includes/header.php');
     </div>
 
     <?php if (!empty($_SESSION['error_message'])): ?>
-        <div class="alert error">
-            <?= htmlspecialchars($_SESSION['error_message']) ?>
-        </div>
-        <?php unset($_SESSION['error_message']); ?>
+    <div class="alert error">
+        <?= htmlspecialchars($_SESSION['error_message']) ?>
+    </div>
+    <?php unset($_SESSION['error_message']); ?>
     <?php endif; ?>
 
 
@@ -78,10 +78,11 @@ include('../includes/header.php');
                                 </div>
 
                                 <div class="form-row-flex">
-                                    <label for="url"><?= htmlspecialchars($dashboardUrl)?></label>
+                                    <label for="url"><?= htmlspecialchars($dashboardUrl) ?></label>
                                     <input type="text" id="url" name="url" value="<?= htmlspecialchars($page['url']) ?>"
-                                        required>
+                                        <?= empty($page['url']) ? 'readonly' : 'required' ?>>
                                 </div>
+
 
                                 <div class="form-row">
                                     <label for="title">Template</label><br>
@@ -156,7 +157,7 @@ include('../includes/header.php');
 
 
 <script>
-    document.querySelectorAll('.menu button').forEach(btn => {
+document.querySelectorAll('.menu button').forEach(btn => {
     btn.addEventListener('click', () => {
         const sectionId = btn.getAttribute('data-section');
 
@@ -186,7 +187,7 @@ if (successAlert) {
         successAlert.style.display = 'none';
     }, 4000);
 }
-    
+
 let isUpdated = false;
 let pendingHref = null;
 
@@ -203,7 +204,7 @@ document.querySelectorAll('input, textarea, select').forEach(input => {
 document.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', (e) => {
         if (isUpdated) {
-            e.preventDefault(); 
+            e.preventDefault();
             pendingHref = link.href;
             unsavedAlert.style.display = 'block';
         }
@@ -223,12 +224,6 @@ document.querySelector('form')?.addEventListener('submit', () => {
     isUpdated = false;
     unsavedAlert.style.display = 'none';
 });
-
-                                      
-
-
-
-
 </script>
 
 

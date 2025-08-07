@@ -25,7 +25,7 @@
   <nav>
     <a href="/dashboard" class="active">Home</a>
     <a href="/dashboard/pages">Pagina's</a>
-    <a href="/dashboard/settings">Instellingen</a>
+    <a href="/dashboard/widgets">Widgets</a>
     <a href="/dashboard/profile">Profiel</a>
   </nav>
 </div>

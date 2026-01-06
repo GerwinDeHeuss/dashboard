@@ -4,6 +4,7 @@ require_once  '../../controllers/controller.php';
 
 include('../includes/header.php');
 
+
 ?>
 
 <section id="widgets">
@@ -26,6 +27,9 @@ include('../includes/header.php');
     </div>
     <div class="container">
         <div class="cards-wrapper">
+            <?php foreach ($widgetContent as $content): ?>
+            <?php foreach ($widgets as $widget): ?>
+            <?php if ($widget['widgetcontent_id'] == $content['id']): ?>
             <div class="card">
                 <div class="info">
                     <div>
@@ -38,8 +42,8 @@ include('../includes/header.php');
                                 </svg>
                             </div>
                         </div>
-                        <h3>Titel</h3>
-                        <p>Omschrijving</p>
+                        <h3><?= htmlspecialchars($content['title']) ?></h3>
+                        <p><?= htmlspecialchars($content['description']) ?></p>
                     </div>
                     <div class="content">
                         <div>
@@ -49,12 +53,12 @@ include('../includes/header.php');
                             </div>
                             <div class="justify-between">
                                 <p>Laatst bewerkt</p>
-                                <p><strong>3 dagen geleden</strong></p>
+                                <p><strong><?= htmlspecialchars($widget['last_edit']) ?></strong></p>
                             </div>
                         </div>
                         <div class="align-center gap10">
                             <div>
-                                <a class="" href="">
+                                <a class="" href="edit.php?id=<?= $widget['id'] ?>">
                                     <button class="white-btn">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                                             width="24px" fill="#292D32">
@@ -66,8 +70,11 @@ include('../includes/header.php');
                                 </a>
                             </div>
                             <div>
-                                <a class="" href="" target="_blank">
-                                    <button class="white-btn">
+                                <form method="post" action="../../controllers/widgets/delete.php"
+                                    style="display: inline;">
+                                    <input type="hidden" name="id" value="<?= $widget['id'] ?>">
+                                    <button type="submit" class="white-btn"
+                                        onclick="return confirm('Weet je zeker dat je deze widget wilt verwijderen?');">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                                             width="24px" fill="#292D32">
                                             <path
@@ -75,41 +82,58 @@ include('../includes/header.php');
                                         </svg>
                                         Verwijderen
                                     </button>
-                                </a>
+                                </form>
                             </div>
 
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="info">
-                    <div>
-                        <div>
-                            <div class="icon align-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960"
-                                    width="32px" fill="#00e1b4">
-                                    <path
-                                        d="M320-240h320v-80H320v80Zm0-160h320v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z" />
-                                </svg>
-                            </div>
-
-                        </div>
-                        <h3>Titel</h3>
-                        <p>Omschrijving test</p>
-                    </div>
-                    <div>
-                        test
-                    </div>
-                </div>
-            </div>
-            <div class="card">test</div>
-            <div class="card">test</div>
+            <?php endif; ?>
+            <?php endforeach; ?>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
 
+<div id="addwidget"></div>
+<div id="slide-in">
+    <div class="slide-in-header">
+        <h2>Nieuwe widget toevoegen</h2>
+        <button id="slide-in-close">&times;</button>
+    </div>
+    <form method="post" style="padding: 20px 20px 20px 20px;">
+        <label for="slide-in-title">Titel:</label><br>
+        <input type="text" id="slide-in-title" name="title" required
+            style="width: 100%; padding: 8px; margin-bottom: 12px;"><br>
+        <label for="slide-in-description">Omschrijving:</label><br>
+        <input type="text" id="slide-in-description" name="description" required
+            style="width: 100%; padding: 8px; margin-bottom: 12px;"><br>
+        <label for="slide-in-text">tekst:</label><br>
+        <input type="text" id="slide-in-text" name="text" required
+            style="width: 100%; padding: 8px; margin-bottom: 12px;"><br>
+        <button type="submit" name="add_widget" style="" class="blue-btn">Toevoegen</button>
+    </form>
+</div>
+
+<?php
+
+if (!empty($_SESSION['error_message'])): ?>
+<div class="alert error">
+    <?= htmlspecialchars($_SESSION['error_message']) ?>
+</div>
+<?php unset($_SESSION['error_message']); ?>
+<?php endif; ?>
+
+<?php if (!empty($_SESSION['success_message'])): ?>
+<div class="alert success">
+    <?= htmlspecialchars($_SESSION['success_message']) ?>
+</div>
+<?php unset($_SESSION['success_message']); ?>
+<?php endif; ?>
+
 <?php 
+
 
 include('../includes/footer.php');
 

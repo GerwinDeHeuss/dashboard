@@ -39,7 +39,7 @@ include('../includes/header.php');
                     <p>Bewerk de pagina van <?= htmlspecialchars($page['title']) ?></p>
                 </div>
                 <div class="align-center">
-                    <button type="submit" class=" blue-btn">
+                    <button type="submit" name="save_page" class=" blue-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                             fill="#292D32">
                             <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
@@ -57,6 +57,7 @@ include('../includes/header.php');
                 <div class="menu">
                     <ul>
                         <li><button type="button" class="active" data-section="page">Pagina</button></li>
+                        <li><button type="button" data-section="banner">Banner</button></li>
                         <li><button type="button" data-section="settings">Widgets</button></li>
                         <li><button type="button" data-section="profiel">Instellingen</button></li>
                     </ul>
@@ -98,6 +99,14 @@ include('../includes/header.php');
                                 </div>
                                 <p class="created"><?= htmlspecialchars($page['created_at']) ?></p>
                             </div>
+                        </div>
+                    </div>
+                    <div class="content-section hidden" id="banner">
+                        <div class="header">
+                            <h2>Banner bewerken voor <?= htmlspecialchars($page['title']) ?></h2>
+                        </div>
+                        <div class="info">
+                            <p class="created"><?= htmlspecialchars($page['created_at']) ?></p>
                         </div>
                     </div>
                     <div class="content-section hidden" id="settings">

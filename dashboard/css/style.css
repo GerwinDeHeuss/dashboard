@@ -227,10 +227,6 @@ p {
   display: block;
 }
 
-#pages_edit .menu {
-  min-width: 200px;
-}
-
 #pages_edit .hidden {
   display: none;
 }
@@ -241,7 +237,6 @@ p {
 
 #pages_edit .menu {
   width: 20%;
-  height: 150px;
   background-color: white;
   border: 1px solid #e5e7eb;
   padding: 1rem;

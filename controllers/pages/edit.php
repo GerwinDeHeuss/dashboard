@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../config/config.php';
 $id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_page'])) {
 
     $id = $_POST['id'] ?? null;
     $title = $_POST['title'] ?? '';

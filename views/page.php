@@ -38,9 +38,36 @@ if (!$template || !file_exists(__DIR__ . '/' . $template['filename'])) {
     exit;
 }
 
+// **Widgets ophalen met directe query hier**
+$widgetContentStmt = $conn->query("SELECT * FROM WidgetContent");
+$widgetContent = [];
+if ($widgetContentStmt) {
+    while ($row = $widgetContentStmt->fetch(PDO::FETCH_ASSOC)) {
+        $widgetContent[$row['id']] = $row;  // Maak associative array met id als key
+    }
+}
+
+// Koppel widgets aan deze pagina
+$pageId = $page['id'];
+
+foreach ($widgetContent as $widgetId => $widget) {
+    // Controleer of deze widget op deze pagina al gekoppeld is
+    $checkStmt = $conn->prepare("SELECT COUNT(*) FROM PageWidgets WHERE page_id = ? AND widget_id = ?");
+    $checkStmt->execute([$pageId, $widgetId]);
+    $exists = $checkStmt->fetchColumn();
+
+    if (!$exists) {
+        // Voeg de koppeling toe
+        $insertStmt = $conn->prepare("INSERT INTO PageWidgets (page_id, widget_id) VALUES (?, ?)");
+        $insertStmt->execute([$pageId, $widgetId]);
+    }
+}
+
+
 // Zet gegevens klaar voor gebruik in template
 $title = $pageContent['title']; 
 $pageData = $page;
 $pageDescription = $pageContent['description'] ?? '';
 
+// Template includen, daarin kun je $widgetContent gebruiken
 include __DIR__ . '/' . $template['filename'];

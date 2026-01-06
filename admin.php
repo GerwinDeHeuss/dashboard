@@ -1,1 +1,1 @@
-<a href="./dashboard/index.php">inloggen</a>
+<a href="./dashboard/index.php">View login</a>

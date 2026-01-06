@@ -1,5 +1,6 @@
 <?php include('includes/header.php'); ?>
 
-<a href="./pages/index.php">pages</a>
+  <p>Hier komt je content</p>
 
 <?php include('includes/footer.php'); ?> 
+

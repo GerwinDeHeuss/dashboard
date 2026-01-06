@@ -1,3 +1,10 @@
+<?php
+if (file_exists('./config/config.php')) {
+    include('./config/config.php');
+} else {
+    include('../../config/config.php');
+}
+?>
 <!DOCTYPE html>
 <html lang='en'>
 
@@ -11,5 +18,6 @@
 
 
 <body>
+    
 
 header

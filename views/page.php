@@ -47,6 +47,10 @@ if ($widgetContentStmt) {
     }
 }
 
+// **Menu items ophalen via functie**
+require_once(__DIR__ . '/../controllers/menu/menu.php');
+$menuItems = getAllMenuItems($conn);
+
 // Koppel widgets aan deze pagina
 $pageId = $page['id'];
 

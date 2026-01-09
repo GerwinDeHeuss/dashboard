@@ -8,144 +8,117 @@
     <link rel="stylesheet" href="../views/css/style.css">
 </head>
 <body>
-    <h1><?php echo htmlspecialchars($pageContent['title']); ?></h1>
+    <!-- <h1><?php echo htmlspecialchars($pageContent['title']); ?></h1> -->
 
-    <p>Welkom op deze pagina! homepage</p>
+    <!-- <p>Welkom op deze pagina! homepage</p>
     <h1><?php echo htmlspecialchars($widgetContent[1]['title'] ?? 'Widget niet gevonden'); ?></h1>
     <h1><?php echo htmlspecialchars($widgetContent[2]['description']);?></h1>
-    <?php var_dump($widgetContent);?>
+    <?php var_dump($widgetContent);?> -->
 
-    <section class="service" id="services">
-      <div class="titletop">
-        <h1 class="white">Onze</h2>
-        <h1 class="light-blue">Services</h2>
-      </div>
-      <div class="hr">
-        <hr>
-      </div>
-      <div class="content">
-        <div class="wrap">
-          <div class="row">
-            <div class="col4">
-              <div class="card">
-                <div>
-                  <img src="./img/webdesign.jpg" alt>
-                </div>
-                <div class="info">
-                  <div class="title">
-                    <?php echo htmlspecialchars($widgetContent[1]['title']);?>
-                  </div>
-                  <div class="text">
-                    <?php echo htmlspecialchars($widgetContent[1]['text']);?>
-                  </div>
-                  <div class="flex space-between text-bottom">
-                    <div class="flex">
-                      <div>
-                        <i
-                          class="fa-solid fa-pen icon small-image light-blue"></i>
-                      </div>
-                      <div class="flex align-center title-experience white">
-                        <?php echo htmlspecialchars($widgetContent[1]['title']);?>
-                      </div>
-                    </div>
-                    <div class="flex align-center">
-                      <div>
-                        <i class="fa-regular fa-clock small-image"
-                          style="color: #3fd8be;"></i>
-
-                      </div>
-                      <div class="text-experience">
-                        <?php echo htmlspecialchars($widgetContent[1]['description']);?>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-
-                  </div>
-                </div>
+    <!-- Banner Section -->
+      <div class="banner">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+          <div class="nav-container">
+            <div class="nav-content">
+              <div class="logo">
+                <h2>HKunlimited</h2>
+              </div>
+              <div class="nav-menu">
+                <?php include __DIR__ . '/includes/menu.php'; ?>
+              </div>
+              <div class="nav-button">
+                <img style="width: 60px" src="./img/2 2.png" alt="" />
               </div>
             </div>
-            <div class="col4">
-              <div class="card">
-                <div>
-                  <img src="./img/webdevelopment.jpg" alt>
-                </div>
-                <div class="info">
-                  <div class="title">
-                    <?php echo htmlspecialchars($widgetContent[2]['title']);?>
-                  </div>
-                  <div class="text">
-                    <?php echo htmlspecialchars($widgetContent[2]['text']);?>
-                  </div>
-                  <div class="flex space-between text-bottom">
-                    <div class="flex">
-                      <div>
-                        <i
-                          class="fa-solid fa-code icon small-image light-blue"></i>
-                      </div>
-                      <div class="flex align-center title-experience white">
-                        <?php echo htmlspecialchars($widgetContent[2]['title']);?>
-                      </div>
-                    </div>
-                    <div class="flex align-center">
-                      <div>
-                        <i class="fa-regular fa-clock small-image"
-                          style="color: #3fd8be;"></i>
+          </div>
+        </nav>
 
-                      </div>
-                      <div class="text-experience">
-                        <?php echo htmlspecialchars($widgetContent[2]['description']);?>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
+        <!-- Background Pattern -->
+        <div class="background-pattern">
+          <div class="pattern-circle pattern-circle-1"></div>
+          <div class="pattern-circle pattern-circle-2"></div>
+        </div>
 
-                  </div>
-                </div>
+        <!-- Main Banner Content -->
+        <div class="banner-content">
+          <div class="content-grid">
+            <!-- Left Content -->
+            <div class="content-left">
+              <div class="content-text">
+                <h1 class="main-title">
+                  Ontdek Unlimited
+                  <span class="title-highlight">Mogelijkheden</span>
+                  <span class="title-normal">met HKunlimited</span>
+                </h1>
+                <p class="main-description">
+                  Wij brengen jouw digitale ambities tot leven. HKunlimited
+                  combineert technische innovatie met creativiteit om unieke
+                  oplossingen te bouwen die jouw bedrijf laten groeien. Samen
+                  maken we van elke uitdaging
+                </p>
+              </div>
+              <div class="button-group">
+                <!-- Changed to darker background color for better contrast with white text -->
+                <a href="#services">
+                  <button
+                    class="btn-primary"
+                    style="
+                      background-color: #021031 !important;
+                      color: white !important;
+                      border: 2px solid #3fd8be !important;
+                    "
+                  >
+                    Ontdek Meer
+                  </button>
+                </a>
               </div>
             </div>
-            <div class="col4">
-              <div class="card">
-                <div>
-                  <img src="./img/webapplicatie.jpg" alt>
-                </div>
-                <div class="info">
-                  <div class="title">
-                    <?php echo htmlspecialchars($widgetContent[3]['title']);?>
-                  </div>
-                  <div class="text">
-                    <?php echo htmlspecialchars($widgetContent[3]['text']);?>
-                  </div>
-                  <div class="flex space-between text-bottom">
-                    <div class="flex">
-                      <div>
-                        <i
-                          class="fa-solid fa-gears icon small-image light-blue"></i>
-                      </div>
-                      <div class="flex align-center title-experience white">
-                        <?php echo htmlspecialchars($widgetContent[3]['title']);?>
-                      </div>
-                    </div>
-                    <div class="flex align-center">
-                      <div>
-                        <i class="fa-regular fa-clock small-image"
-                          style="color: #3fd8be;"></i>
 
-                      </div>
-                      <div class="text-experience">
-                        <?php echo htmlspecialchars($widgetContent[3]['description']);?>
-                      </div>
+            <!-- Right Visual Element -->
+            <div class="content-right">
+              <div class="visual-card">
+                <div class="visual-content">
+                  <div class="visual-item">
+                    <div class="rotating-icon">
+                      <div class="icon-inner"></div>
+                    </div>
+                    <div class="progress-bars">
+                      <div class="progress-bar progress-bar-1"></div>
+                      <div class="progress-bar progress-bar-2"></div>
                     </div>
                   </div>
-                  <div>
+                  <div class="visual-grid">
+                    <div class="grid-item"></div>
+                    <div class="grid-item grid-item-highlight"></div>
+                    <div class="grid-item"></div>
+                  </div>
+                  <div class="stats">
+                    <div class="stat-item">
+                      <div class="stat-bar stat-bar-1"></div>
+                      <span class="stat-label">100%</span>
+                    </div>
+                    <div class="stat-item">
+                      <div class="stat-bar stat-bar-2"></div>
+                      <span class="stat-label">85%</span>
+                    </div>
+                    <div class="stat-item">
+                      <div class="stat-bar stat-bar-3"></div>
+                      <span class="stat-label">70%</span>
+                    </div>
                   </div>
                 </div>
+                <div class="floating-element floating-element-1"></div>
+                <div class="floating-element floating-element-2"></div>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Bottom Accent Line -->
+        <div class="accent-line"></div>
       </div>
-    </section>
+
 
 
 

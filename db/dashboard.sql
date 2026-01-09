@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 06 jan 2026 om 12:43
+-- Gegenereerd op: 09 jan 2026 om 15:56
 -- Serverversie: 8.0.21
 -- PHP-versie: 8.2.5
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `dashboard`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `menu_items`
+--
+
+DROP TABLE IF EXISTS `menu_items`;
+CREATE TABLE IF NOT EXISTS `menu_items` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `order_position` int NOT NULL DEFAULT '0',
+  `is_active` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `menu_items`
+--
+
+INSERT INTO `menu_items` (`id`, `title`, `url`, `order_position`, `is_active`) VALUES
+(1, 'Services', '#services', 1, 1),
+(2, 'Over ons', '#over-ons', 3, 1),
+(3, 'Projecten', '#projects', 2, 1),
+(4, 'Contact', '#contact', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -99,14 +125,14 @@ CREATE TABLE IF NOT EXISTS `pages` (
 --
 
 INSERT INTO `pages` (`id`, `template_id`, `url`, `status`, `created_at`, `pagecontent_id`, `isDeleted`) VALUES
-(20, 8, '', 1, '2025-08-01', 2, 0),
+(20, 18, '', 1, '2025-08-01', 2, 0),
 (21, 6, 'home12', 1, '2025-08-01', 3, 1),
 (22, 6, 'joooo', 1, '2025-08-01', 4, 1),
 (23, 5, 'joee', 0, '2025-08-01', 5, 0),
 (24, 5, 'test1', 0, '2025-08-04', 6, 1),
 (25, 6, 'test', 0, '2025-08-04', 7, 1),
 (26, 6, 'joo', 1, '2025-08-04', 8, 1),
-(27, 7, 'jooooosd', 1, '2025-08-04', 9, 0),
+(27, 17, 'jooooosd', 1, '2025-08-04', 9, 0),
 (28, 6, 'joee', 0, '2025-08-05', 10, 1),
 (29, 8, 'test12345', 0, '2025-08-08', 11, 1);
 
@@ -124,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `pagewidgets` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_page_widget` (`page_id`,`widget_id`),
   KEY `widget_id` (`widget_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `pagewidgets`
@@ -148,7 +174,15 @@ INSERT INTO `pagewidgets` (`id`, `page_id`, `widget_id`) VALUES
 (17, 20, 10),
 (18, 20, 11),
 (19, 20, 12),
-(20, 20, 13);
+(20, 20, 13),
+(21, 27, 6),
+(22, 27, 7),
+(23, 27, 8),
+(24, 27, 9),
+(25, 27, 10),
+(26, 27, 11),
+(27, 27, 12),
+(28, 27, 13);
 
 -- --------------------------------------------------------
 
@@ -162,15 +196,38 @@ CREATE TABLE IF NOT EXISTS `templates` (
   `filename` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `templates`
 --
 
 INSERT INTO `templates` (`id`, `filename`, `title`) VALUES
-(8, 'template.homepage.php', 'Homepage'),
-(7, 'template.fullwidth.php', 'Fullwidth');
+(18, 'template.homepage.php', 'Homepage'),
+(17, 'template.fullwidth.php', 'Fullwidth');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `userId` int NOT NULL AUTO_INCREMENT,
+  `userName` varchar(255) NOT NULL,
+  `userEmail` varchar(255) NOT NULL,
+  `userPassword` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `userIsActive` tinyint NOT NULL DEFAULT '1',
+  PRIMARY KEY (`userId`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `users`
+--
+
+INSERT INTO `users` (`userId`, `userName`, `userEmail`, `userPassword`, `userIsActive`) VALUES
+(1, 'Gerwin de Heus', 'Gerwindeheus@outlook.com', '$2y$10$A.wsBbBAJf1bao8TFgfPKOuxlgJ/D7BIjQvpd9Eh6sgXrt/NWGDMG', 1);
 
 -- --------------------------------------------------------
 
@@ -195,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `widget` (
 INSERT INTO `widget` (`id`, `widgetcontent_id`, `created_at`, `last_edit`) VALUES
 (1, 1, '2025-08-07', '2025-08-07'),
 (2, 2, '2025-08-08', '2025-10-21'),
-(3, 3, '2025-08-08', '2025-08-08'),
+(3, 3, '2025-08-08', '2026-01-06'),
 (4, 4, '2025-08-08', '2025-08-08'),
 (5, 5, '2025-08-08', '2025-08-08'),
 (13, 13, '2025-10-17', '2025-10-21');

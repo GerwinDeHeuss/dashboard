@@ -68,8 +68,4 @@ meldingen:
 
 404 als er een pagina niet bestaat. Nu staat er pagina niet gevonden of in onderhoud.
 
-admin maken in het dashboard waardoor we met modules kunnen werken. Dus als het ze dan bijvoorbeeld gebruik willen maken van de sliders kunnen we dat aanzetten....
-
-
-
-
+admin maken in het dashboard waardoor we met modules kunnen werken. Dus als het ze dan bijvoorbeeld gebruik willen maken van de sliders kunnen we dat aanzetten

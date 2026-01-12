@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 09 jan 2026 om 15:56
+-- Gegenereerd op: 10 jan 2026 om 14:34
 -- Serverversie: 8.0.21
 -- PHP-versie: 8.2.5
 
@@ -34,18 +34,19 @@ CREATE TABLE IF NOT EXISTS `menu_items` (
   `url` varchar(255) NOT NULL,
   `order_position` int NOT NULL DEFAULT '0',
   `is_active` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `page_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_menu_page` (`page_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `menu_items`
 --
 
-INSERT INTO `menu_items` (`id`, `title`, `url`, `order_position`, `is_active`) VALUES
-(1, 'Services', '#services', 1, 1),
-(2, 'Over ons', '#over-ons', 3, 1),
-(3, 'Projecten', '#projects', 2, 1),
-(4, 'Contact', '#contact', 4, 1);
+INSERT INTO `menu_items` (`id`, `title`, `url`, `order_position`, `is_active`, `page_id`) VALUES
+(7, 'Home', '/', 1, 1, 20),
+(9, 'test', '/test', 2, 1, 33),
+(10, 'test2', '/test2', 3, 0, 34);
 
 -- --------------------------------------------------------
 
@@ -82,23 +83,16 @@ CREATE TABLE IF NOT EXISTS `pagecontent` (
   `meta_title` varchar(255) NOT NULL,
   `meta_description` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `pagecontent`
 --
 
 INSERT INTO `pagecontent` (`id`, `title`, `description`, `meta_title`, `meta_description`) VALUES
-(2, 'Home', '', 'Home', 'testt1'),
-(3, 'Home', '', '', ''),
-(4, 'joooo', '', 'joo', 'jooo'),
-(5, 'joe', '', '', ''),
-(6, 'test', '', '', ''),
-(7, 'test', '', '', ''),
-(8, 'joo', '', 'joeeee', ''),
-(9, 'test', '', 'jooo', 'jooooo'),
-(10, 'joee', '', '', ''),
-(11, 'test12345', '', '', '');
+(2, 'Home', '', 'Home', 'testt23'),
+(15, 'test', '', '', ''),
+(16, 'test2', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -118,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
   PRIMARY KEY (`id`),
   KEY `template_id` (`template_id`),
   KEY `fk_pagecontent` (`pagecontent_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `pages`
@@ -126,15 +120,8 @@ CREATE TABLE IF NOT EXISTS `pages` (
 
 INSERT INTO `pages` (`id`, `template_id`, `url`, `status`, `created_at`, `pagecontent_id`, `isDeleted`) VALUES
 (20, 18, '', 1, '2025-08-01', 2, 0),
-(21, 6, 'home12', 1, '2025-08-01', 3, 1),
-(22, 6, 'joooo', 1, '2025-08-01', 4, 1),
-(23, 5, 'joee', 0, '2025-08-01', 5, 0),
-(24, 5, 'test1', 0, '2025-08-04', 6, 1),
-(25, 6, 'test', 0, '2025-08-04', 7, 1),
-(26, 6, 'joo', 1, '2025-08-04', 8, 1),
-(27, 17, 'jooooosd', 1, '2025-08-04', 9, 0),
-(28, 6, 'joee', 0, '2025-08-05', 10, 1),
-(29, 8, 'test12345', 0, '2025-08-08', 11, 1);
+(33, 17, 'test', 0, '2026-01-09', 15, 0),
+(34, 17, 'test2', 0, '2026-01-09', 16, 0);
 
 -- --------------------------------------------------------
 
@@ -150,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `pagewidgets` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_page_widget` (`page_id`,`widget_id`),
   KEY `widget_id` (`widget_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `pagewidgets`
@@ -182,7 +169,21 @@ INSERT INTO `pagewidgets` (`id`, `page_id`, `widget_id`) VALUES
 (25, 27, 10),
 (26, 27, 11),
 (27, 27, 12),
-(28, 27, 13);
+(28, 27, 13),
+(29, 33, 1),
+(30, 33, 2),
+(31, 33, 3),
+(32, 33, 4),
+(33, 33, 5),
+(34, 33, 6),
+(35, 33, 7),
+(36, 33, 8),
+(37, 33, 9),
+(38, 33, 10),
+(39, 33, 11),
+(40, 33, 12),
+(41, 33, 13),
+(42, 20, 14);
 
 -- --------------------------------------------------------
 
@@ -243,19 +244,14 @@ CREATE TABLE IF NOT EXISTS `widget` (
   `last_edit` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `widgetcontent_id` (`widgetcontent_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `widget`
 --
 
 INSERT INTO `widget` (`id`, `widgetcontent_id`, `created_at`, `last_edit`) VALUES
-(1, 1, '2025-08-07', '2025-08-07'),
-(2, 2, '2025-08-08', '2025-10-21'),
-(3, 3, '2025-08-08', '2026-01-06'),
-(4, 4, '2025-08-08', '2025-08-08'),
-(5, 5, '2025-08-08', '2025-08-08'),
-(13, 13, '2025-10-17', '2025-10-21');
+(14, 14, '2026-01-10', '2026-01-10');
 
 -- --------------------------------------------------------
 
@@ -270,30 +266,24 @@ CREATE TABLE IF NOT EXISTS `widgetcontent` (
   `description` varchar(255) DEFAULT NULL,
   `text` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `widgetcontent`
 --
 
 INSERT INTO `widgetcontent` (`id`, `title`, `description`, `text`) VALUES
-(1, 'Webdesign', '4+ jaar ervaring', 'Bij HKUnlimited creëren we op maat gemaakt webdesign dat snel laadt, mobielvriendelijk is en goed scoort in SEO. Laat jouw website opvallen en draag bij aan je succes. Neem contact op voor een vrijblijvende offerte!'),
-(2, 'Webdevelopment', '4+ jaar ervaring', 'Bij HKUnlimited bieden we webdevelopment op maat, van webapplicaties tot complexe oplossingen. We zorgen voor schaalbare, veilige en gebruiksvriendelijke resultaten. Neem contact op voor een vrijblijvende offerte!'),
-(3, 'Webapplicaties', '2+ jaar ervaring', 'Bij HKUnlimited ontwikkelen we webapplicaties die perfect passen bij jouw bedrijf. We leveren schaalbare, gebruiksvriendelijke oplossingen die optimale prestaties bieden. Neem contact op voor een vrijblijvende offerte!'),
-(4, 'joo', 'joo', 'joo'),
-(5, 'joe', 'joe', 'joe'),
-(6, 'test', 'test', 'test'),
-(7, 'test', 'test', 'test'),
-(8, 'test', 'test', 'test'),
-(9, 'stet', 'ste', 'set'),
-(10, 'test', 'ste', 'est'),
-(11, 'test', 'test', 'test'),
-(12, 'test', 'test', 'ets'),
-(13, 'test', 'test', 'est');
+(14, '<h1 class=\"main-title\">\n                  Ontdek Unlimited\n                  <span class=\"title-highlight\">Mogelijkheden</span>\n                  <span class=\"title-normal\">met HKunlimited</span>\n                </h1>', 'Banner tekst', 'Wij brengen jouw digitale ambities tot leven. HKunlimited combineert technische innovatie met creativiteit om unieke oplossingen te bouwen die jouw bedrijf laten groeien. Samen maken we van elke uitdaging');
 
 --
 -- Beperkingen voor geëxporteerde tabellen
 --
+
+--
+-- Beperkingen voor tabel `menu_items`
+--
+ALTER TABLE `menu_items`
+  ADD CONSTRAINT `fk_menu_page` FOREIGN KEY (`page_id`) REFERENCES `pages` (`id`) ON DELETE CASCADE;
 
 --
 -- Beperkingen voor tabel `pages`

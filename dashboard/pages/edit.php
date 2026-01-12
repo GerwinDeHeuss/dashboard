@@ -9,23 +9,6 @@ include('../includes/header.php');
 
 <form method="post" action="" onsubmit="isUpdated = false;">
 
-    <?php if (!empty($_SESSION['success_message'])): ?>
-    <div class="alert success">
-        <?= htmlspecialchars($_SESSION['success_message']) ?>
-    </div>
-    <?php unset($_SESSION['success_message']); ?>
-    <?php endif; ?>
-
-    <div class="alert warning" id="unsaved-alert" style="display: none;">
-        Je hebt wijzigingen gemaakt die nog niet zijn opgeslagen.
-    </div>
-
-    <?php if (!empty($_SESSION['error_message'])): ?>
-    <div class="alert error">
-        <?= htmlspecialchars($_SESSION['error_message']) ?>
-    </div>
-    <?php unset($_SESSION['error_message']); ?>
-    <?php endif; ?>
 
 
     <section id="pages">
@@ -166,29 +149,7 @@ include('../includes/header.php');
 
 
 <script>
-document.querySelectorAll('.menu button').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const sectionId = btn.getAttribute('data-section');
 
-        document.querySelectorAll('.content-section').forEach(section => {
-            section.classList.add('hidden');
-            section.classList.remove('active');
-        });
-
-        const target = document.getElementById(sectionId);
-        target.classList.remove('hidden');
-        target.classList.add('active');
-
-        document.querySelectorAll('.menu button').forEach(b => b.classList.remove('active'));
-
-        btn.classList.add('active');
-        document.getElementById(sectionId).classList.remove('hidden');
-    });
-});
-
-const defaultSection = document.getElementById('pages');
-defaultSection.classList.remove('hidden');
-defaultSection.classList.add('active');
 
 const successAlert = document.querySelector('.alert.success');
 if (successAlert) {

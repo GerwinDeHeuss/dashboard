@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php include 'error_messages.php'; ?>
 <html lang='en'>
 
 <head>

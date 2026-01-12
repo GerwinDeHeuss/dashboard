@@ -42,8 +42,8 @@ include('../includes/header.php');
                                 </svg>
                             </div>
                         </div>
-                        <h3><?= htmlspecialchars($content['title']) ?></h3>
-                        <p><?= htmlspecialchars($content['description']) ?></p>
+                        <h3><?= htmlspecialchars(strip_tags($content['title'])) ?></h3>
+                        <p><?= htmlspecialchars(strip_tags($content['description'])) ?></p>
                     </div>
                     <div class="content">
                         <div>
@@ -115,22 +115,6 @@ include('../includes/header.php');
         <button type="submit" name="add_widget" style="" class="blue-btn">Toevoegen</button>
     </form>
 </div>
-
-<?php
-
-if (!empty($_SESSION['error_message'])): ?>
-<div class="alert error">
-    <?= htmlspecialchars($_SESSION['error_message']) ?>
-</div>
-<?php unset($_SESSION['error_message']); ?>
-<?php endif; ?>
-
-<?php if (!empty($_SESSION['success_message'])): ?>
-<div class="alert success">
-    <?= htmlspecialchars($_SESSION['success_message']) ?>
-</div>
-<?php unset($_SESSION['success_message']); ?>
-<?php endif; ?>
 
 <?php 
 

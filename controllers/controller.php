@@ -39,6 +39,7 @@ require_once('widgets/addWidgets.php');
 
 require_once('menu/menu.php');
 $menuItems = getAllMenuItems($conn);
+$menuItemsDashboard = getAllMenuItemsForDashboard($conn);
 
 require_once('options/options.php');
 $dashboardUrl = rtrim(getOption($conn, 'dashboard_url'), '/') . '/';

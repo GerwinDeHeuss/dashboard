@@ -11,7 +11,7 @@
     <!-- <h1><?php echo htmlspecialchars($pageContent['title']); ?></h1> -->
 
     <!-- <p>Welkom op deze pagina! homepage</p>
-    <h1><?php echo htmlspecialchars($widgetContent[1]['title'] ?? 'Widget niet gevonden'); ?></h1>
+    <h1></h1>
     <h1><?php echo htmlspecialchars($widgetContent[2]['description']);?></h1>
     <?php var_dump($widgetContent);?> -->
 
@@ -46,11 +46,9 @@
             <!-- Left Content -->
             <div class="content-left">
               <div class="content-text">
-                <h1 class="main-title">
-                  Ontdek Unlimited
-                  <span class="title-highlight">Mogelijkheden</span>
-                  <span class="title-normal">met HKunlimited</span>
-                </h1>
+               
+                  <?php echo ($widgetContent[14]['title']); ?>
+                
                 <p class="main-description">
                   Wij brengen jouw digitale ambities tot leven. HKunlimited
                   combineert technische innovatie met creativiteit om unieke

@@ -35,6 +35,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_page'])) {
         // Voeg daarna toe aan pages
         $stmt2 = $conn->prepare("INSERT INTO pages (template_id, url, status, created_at, pagecontent_id) VALUES (?, ?, 0, ?, ?)");
         $stmt2->execute([$template_id, $url, $created_at, $pagecontent_id]);
+        
+        $pageId = $conn->lastInsertId();
+        
+        // Maak automatisch een inactief menu item voor deze pagina
+        $menuUrl = '/' . $url;
+        
+        // Haal hoogste order op voor nieuwe item
+        $maxOrderStmt = $conn->query("SELECT MAX(order_position) as max_order FROM menu_items");
+        $maxOrderResult = $maxOrderStmt->fetch();
+        $maxOrder = $maxOrderResult['max_order'] ?? 0;
+        
+        // Voeg menu item toe (inactief)
+        $menuStmt = $conn->prepare("INSERT INTO menu_items (title, url, order_position, is_active, page_id) VALUES (?, ?, ?, 0, ?)");
+        $menuStmt->execute([$title, $menuUrl, $maxOrder + 1, $pageId]);
 
         header("Location: " . $_SERVER['PHP_SELF']);
         exit;

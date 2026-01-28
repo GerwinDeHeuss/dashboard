@@ -166,35 +166,73 @@ const titleDisplay = document.getElementById('title-display');
 const codeToggleBtn = document.querySelector('.code-toggle-btn[data-target="title"]');
 
 if (titleDisplay && codeToggleBtn) {
-    // Sync display field naar hidden field bij input
-    titleDisplay.addEventListener('input', () => {
-        const newText = titleDisplay.value;
+    // Check bij laden of er spans zijn
+    const hasSpans = () => {
         const currentHtml = titleInput.value;
-        
-        // Als er HTML tags zijn, laat de HTML volledig intact
-        // Alleen via de code editor kunnen HTML wijzigingen worden gemaakt
         if (currentHtml.includes('<') && currentHtml.includes('>')) {
-            // Doe niets - HTML kan alleen via code editor worden aangepast
-            return;
-        } else {
-            // Geen HTML tags, gewoon normale tekst sync
-            titleInput.value = newText;
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = currentHtml;
+            const firstElement = tempDiv.firstElementChild;
+            return firstElement && firstElement.children.length > 0;
         }
-    });
+        return false;
+    };
     
-    // Toon icoon bij focus op display field
-    titleDisplay.addEventListener('focus', () => {
+    if (hasSpans()) {
+        // Er zijn spans - maak input read-only en open direct de editor bij klik
+        titleDisplay.setAttribute('readonly', 'readonly');
+        titleDisplay.style.cursor = 'pointer';
+        titleDisplay.style.backgroundColor = '#f9f9f9';
+        titleDisplay.title = 'Klik om code editor te openen';
         codeToggleBtn.style.opacity = '1';
-    });
-    
-    // Verberg icoon bij blur
-    titleDisplay.addEventListener('blur', () => {
-        setTimeout(() => {
-            if (!slideIn || slideIn.style.right !== '0px') {
-                codeToggleBtn.style.opacity = '0';
+        
+        // Klik op input opent code editor
+        titleDisplay.addEventListener('click', () => {
+            slideIn.style.display = 'block';
+            slideIn.style.right = '0';
+            slideInCode.value = titleInput.value;
+        });
+    } else {
+        // Geen spans - normale sync
+        titleDisplay.addEventListener('input', () => {
+            const newText = titleDisplay.value;
+            const currentHtml = titleInput.value;
+            
+            // Check of er HTML tags in de waarde zitten
+            if (currentHtml.includes('<') && currentHtml.includes('>')) {
+                // Er is HTML - behoud de outer tag en attributen, vervang de innerHTML
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = currentHtml;
+                
+                const firstElement = tempDiv.firstElementChild;
+                if (firstElement) {
+                    // Behoud de h1 (of andere tag) met alle classes/attributen
+                    // maar vervang de volledige innerHTML met de nieuwe tekst
+                    firstElement.innerHTML = newText;
+                    titleInput.value = tempDiv.innerHTML;
+                } else {
+                    titleInput.value = newText;
+                }
+            } else {
+                // Geen HTML, gewoon plain text
+                titleInput.value = newText;
             }
-        }, 200);
-    });
+        });
+        
+        // Toon icoon bij focus op display field
+        titleDisplay.addEventListener('focus', () => {
+            codeToggleBtn.style.opacity = '1';
+        });
+        
+        // Verberg icoon bij blur
+        titleDisplay.addEventListener('blur', () => {
+            setTimeout(() => {
+                if (!slideIn || slideIn.style.right !== '0px') {
+                    codeToggleBtn.style.opacity = '0';
+                }
+            }, 200);
+        });
+    }
     
     // Open popup alleen bij klik op code button
     codeToggleBtn.addEventListener('click', () => {
